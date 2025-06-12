@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Александр Новиков - Профессиональный фотограф | Москва</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #34495e;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Lato', sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: var(--light);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--light);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--accent);
+            color: var(--light);
+            border-radius: 3px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+        }
+        
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1493863641943-9b68992a8d07?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1158&q=80') no-repeat center center/cover;
+            color: var(--light);
+            text-align: center;
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 60px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 22px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .hero .btn {
+            margin-top: 20px;
+        }
+        
+        .section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 36px;
+            color: var(--dark);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .about {
+            background-color: var(--light);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .about-text p {
+            margin-bottom: 15px;
+        }
+        
+        .skills {
+            margin-top: 30px;
+        }
+        
+        .skill-item {
+            margin-bottom: 20px;
+        }
+        
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .skill-bar {
+            height: 10px;
+            background-color: #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background-color: var(--accent);
+            border-radius: 5px;
+        }
+        
+        .portfolio {
+            background-color: #fff;
+        }
+        
+        .portfolio-filter {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 8px 20px;
+            margin: 0 10px;
+            background: none;
+            border: none;
+            color: var(--dark);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 3px;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--accent);
+            color: var(--light);
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .portfolio-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .portfolio-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s;
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(231, 76, 60, 0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        
+        .portfolio-item:hover .portfolio-img {
+            transform: scale(1.1);
+        }
+        
+        .portfolio-overlay h3 {
+            color: var(--light);
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        
+        .portfolio-overlay p {
+            color: var(--light);
+            font-size: 16px;
+            margin-bottom: 20px;
+            text-align: center;
+            padding: 0 20px;
+        }
+        
+        .services {
+            background-color: var(--light);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: #fff;
+            padding: 40px 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-icon {
+            font-size: 50px;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .testimonials {
+            background-color: #fff;
+        }
+        
+        .testimonials-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .testimonial-item {
+            background-color: var(--light);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            display: none;
+        }
+        
+        .testimonial-item.active {
+            display: block;
+        }
+        
+        .testimonial-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 5px solid var(--accent);
+        }
+        
+        .testimonial-text {
+            font-size: 18px;
+            font-style: italic;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--accent);
+        }
+        
+        .testimonial-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .testimonial-dot {
+            width: 12px;
+            height: 12px;
+            background-color: #ddd;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .testimonial-dot.active {
+            background-color: var(--accent);
+        }
+        
+        .contact {
+            background-color: var(--light);
+        }
+        
+        .contact-content {
+            display: flex;
+            gap: 50px;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-info h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .contact-details {
+            margin-bottom: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .contact-icon {
+            font-size: 20px;
+            color: var(--accent);
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+        
+        .contact-text h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .contact-form {
+            flex: 1;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .footer-social {
+            margin-bottom: 20px;
+        }
+        
+        .social-link {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--light);
+            border-radius: 50%;
+            line-height: 40px;
+            margin: 0 10px;
+            transition: background-color 0.3s;
+        }
+        
+        .social-link:hover {
+            background-color: var(--accent);
+        }
+        
+        .copyright {
+            opacity: 0.8;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 992px) {
+            .about-content, .contact-content {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 48px;
+            }
+            
+            .hero p {
+                font-size: 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .section-title {
+                font-size: 30px;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Александр <span>Новиков</span></a>
+                <ul class="nav-links">
+                    <li><a href="#home">Главная</a></li>
+                    <li><a href="#about">Обо мне</a></li>
+                    <li><a href="#portfolio">Портфолио</a></li>
+                    <li><a href="#services">Услуги</a></li>
+                    <li><a href="#testimonials">Отзывы</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
+                <a href="#contact" class="btn">Связаться</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Александр Новиков</h1>
+                <p>Профессиональный фотограф с 10-летним опытом. Специализация: портретная, свадебная и коммерческая фотография.</p>
+                <a href="#portfolio" class="btn">Посмотреть работы</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section about" id="about">
+        <div class="container">
+            <h2 class="section-title">Обо мне</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Александр Новиков">
+                </div>
+                <div class="about-text">
+                    <h3>Профессиональный фотограф из Москвы</h3>
+                    <p>Меня зовут Александр Новиков, я профессиональный фотограф с более чем 10-летним опытом работы в индустрии. Моя страсть к фотографии началась еще в детстве, и с тех пор я непрерывно совершенствую свое мастерство.</p>
+                    <p>Я специализируюсь на портретной, свадебной и коммерческой фотографии. Мои работы публиковались в таких изданиях, как Vogue, Harper's Bazaar и Elle.</p>
+                    <p>Для меня фотография — это не просто профессия, а способ запечатлеть эмоции, рассказать историю и создать искусство, которое будет жить вечно.</p>
+                    
+                    <div class="skills">
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Портретная фотография</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Свадебная фотография</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Коммерческая фотография</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Обработка фотографий</span>
+                                <span>98%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 98%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section portfolio" id="portfolio">
+        <div class="container">
+            <h2 class="section-title">Портфолио</h2>
+            <div class="portfolio-filter">
+                <button class="filter-btn active" data-filter="all">Все работы</button>
+                <button class="filter-btn" data-filter="portrait">Портреты</button>
+                <button class="filter-btn" data-filter="wedding">Свадьбы</button>
+                <button class="filter-btn" data-filter="commercial">Коммерческие</button>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-category="portrait">
+                    <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Портрет" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Портретная серия</h3>
+                        <p>Серия портретов для журнала Vogue</p>
+                        <a href="#" class="btn">Подробнее</a>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="wedding">
+                    <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Свадьба" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Свадебная церемония</h3>
+                        <p>Съемка свадьбы Анны и Дмитрия в Подмосковье</p>
+                        <a href="#" class="btn">Подробнее</a>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="commercial">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80" alt="Коммерческая съемка" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Корпоративная съемка</h3>
+                        <p>Фотосессия для годового отчета компании</p>
+                        <a href="#" class="btn">Подробнее</a>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="portrait">
+                    <img src="https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Портрет" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Мужской портрет</h3>
+                        <p>Съемка для рекламной кампании</p>
+                        <a href="#" class="btn">Подробнее</a>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="wedding">
+                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Свадьба" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Love Story</h3>
+                        <p>Предсвадебная фотосессия пары</p>
+                        <a href="#" class="btn">Подробнее</a>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="commercial">
+                    <img src="https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" alt="Коммерческая съемка" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Рекламная кампания</h3>
+                        <p>Фото для нового бренда одежды</p>
+                        <a href="#" class="btn">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section services" id="services">
+        <div class="container">
+            <h2 class="section-title">Мои услуги</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">📷</div>
+                    <h3>Портретная съемка</h3>
+                    <p>Индивидуальные и групповые портреты в студии или на природе. Подчеркну вашу индивидуальность и создам фотографии, которые вы будете любить.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💍</div>
+                    <h3>Свадебная фотография</h3>
+                    <p>Полное сопровождение вашего особенного дня. От Love Story до банкета - запечатлю все важные моменты вашей свадьбы.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">👔</div>
+                    <h3>Коммерческая съемка</h3>
+                    <p>Фото для каталогов, рекламы, корпоративных сайтов и соцсетей. Профессиональные снимки для продвижения вашего бизнеса.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">👶</div>
+                    <h3>Семейная фотосессия</h3>
+                    <p>Теплые и живые фотографии вашей семьи. Запечатлю искренние эмоции и связь между близкими людьми.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎭</div>
+                    <h3>Fashion съемка</h3>
+                    <p>Создание стильных образов для модельных портфолио, брендов одежды и fashion-журналов.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🖼️</div>
+                    <h3>Обработка фотографий</h3>
+                    <p>Профессиональная ретушь и цветокоррекция ваших фотографий. Придание снимкам идеального вида.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">Отзывы клиентов</h2>
+            <div class="testimonials-slider">
+                <div class="testimonial-item active">
+                    <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Мария Иванова" class="testimonial-img">
+                    <p class="testimonial-text">"Александр - настоящий профессионал! Съемка прошла легко и непринужденно, а результат превзошел все ожидания. Фотографии получились потрясающие, все друзья и родственники в восторге!"</p>
+                    <p class="testimonial-author">Мария Иванова</p>
+                </div>
+                <div class="testimonial-item">
+                    <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Дмитрий Петров" class="testimonial-img">
+                    <p class="testimonial-text">"Работали с Александром над корпоративной фотосессией для нашего сайта. Очень доволен результатом - фотографии точно передают дух нашей компании и выглядят профессионально. Рекомендую!"</p>
+                    <p class="testimonial-author">Дмитрий Петров</p>
+                </div>
+                <div class="testimonial-item">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Анна Сидорова" class="testimonial-img">
+                    <p class="testimonial-text">"Спасибо Александру за прекрасные свадебные фотографии! Он смог запечатлеть все важные моменты нашего дня, и теперь у нас есть чудесные воспоминания на всю жизнь. Очень чуткий и внимательный фотограф."</p>
+                    <p class="testimonial-author">Анна Сидорова</p>
+                </div>
+                <div class="testimonial-nav">
+                    <div class="testimonial-dot active" data-slide="0"></div>
+                    <div class="testimonial-dot" data-slide="1"></div>
+                    <div class="testimonial-dot" data-slide="2"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Связаться со мной</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Давайте работать вместе</h3>
+                    <p>Если вам нравится мое портфолио и вы хотите заказать фотосессию или обсудить проект, свяжитесь со мной любым удобным способом.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div class="contact-text">
+                                <h4>Адрес</h4>
+                                <p>Москва, ул. Фотографов, 15</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📞</div>
+                            <div class="contact-text">
+                                <h4>Телефон</h4>
+                                <p>+7 (999) 123-45-67</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">✉️</div>
+                            <div class="contact-text">
+                                <h4>Email</h4>
+                                <p>alex.novikov@photo.ru</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">🕒</div>
+                            <div class="contact-text">
+                                <h4>Часы работы</h4>
+                                <p>Пн-Пт: 10:00 - 20:00<br>Сб: 11:00 - 18:00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Ваше имя" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Ваш email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Тема сообщения">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Ваше сообщение" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Отправить сообщение</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-social">
+                <a href="#" class="social-link">VK</a>
+                <a href="#" class="social-link">IG</a>
+                <a href="#" class="social-link">FB</a>
+                <a href="#" class="social-link">TG</a>
+            </div>
+            <p class="copyright">© 2023 Александр Новиков. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Простая реализация фильтрации портфолио
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Удаляем active у всех кнопок
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                // Добавляем active к текущей кнопке
+                this.classList.add('active');
+                
+                const filter = this.dataset.filter;
+                const items = document.querySelectorAll('.portfolio-item');
+                
+                items.forEach(item => {
+                    if (filter === 'all' || item.dataset.category === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Простой слайдер отзывов
+        document.querySelectorAll('.testimonial-dot').forEach(dot => {
+            dot.addEventListener('click', function() {
+                const slideIndex = this.dataset.slide;
+                
+                // Удаляем active у всех точек и слайдов
+                document.querySelectorAll('.testimonial-dot, .testimonial-item').forEach(el => {
+                    el.classList.remove('active');
+                });
+                
+                // Добавляем active к текущей точке и слайду
+                this.classList.add('active');
+                document.querySelectorAll('.testimonial-item')[slideIndex].classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

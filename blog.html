@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Блог Екатерины Смирновой | Путешествия и фотография</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6c5ce7;
+            --secondary: #a29bfe;
+            --dark: #2d3436;
+            --light: #f5f6fa;
+            --accent: #fd79a8;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        a:hover {
+            color: var(--accent);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        
+        header.scrolled {
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            padding: 5px 0;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            transition: var(--transition);
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--accent);
+            margin-left: 5px;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 28px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+            position: relative;
+        }
+        
+        nav ul li a {
+            color: var(--dark);
+            font-weight: 500;
+            position: relative;
+            display: block;
+            padding: 5px 0;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            bottom: 0;
+            left: 0;
+            transition: var(--transition);
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--dark);
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, rgba(108, 92, 231, 0.9) 0%, rgba(253, 121, 168, 0.8) 100%), 
+                        url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 150px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, transparent 20%, rgba(0,0,0,0.1) 21%);
+            background-size: 10px 10px;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background-color: var(--accent);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(253, 121, 168, 0.3);
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(253, 121, 168, 0.4);
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        /* Floating elements */
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        .floating-element {
+            position: absolute;
+            background-color: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+        
+        .floating-element:nth-child(1) {
+            width: 30px;
+            height: 30px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .floating-element:nth-child(2) {
+            width: 50px;
+            height: 50px;
+            top: 60%;
+            left: 80%;
+            animation-delay: 2s;
+            animation-duration: 20s;
+        }
+        
+        .floating-element:nth-child(3) {
+            width: 70px;
+            height: 70px;
+            top: 30%;
+            left: 70%;
+            animation-delay: 4s;
+            animation-duration: 25s;
+        }
+        
+        /* Main content */
+        .main {
+            display: flex;
+            margin: 60px 0;
+            gap: 40px;
+            position: relative;
+        }
+        
+        .content {
+            flex: 2;
+        }
+        
+        .sidebar {
+            flex: 1;
+            position: sticky;
+            top: 100px;
+            align-self: flex-start;
+        }
+        
+        /* Posts */
+        .post {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            margin-bottom: 50px;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .post:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .post-image-container {
+            position: relative;
+            overflow: hidden;
+            height: 400px;
+        }
+        
+        .post-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .post:hover .post-image {
+            transform: scale(1.05);
+        }
+        
+        .post-category {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: var(--accent);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            z-index: 1;
+        }
+        
+        .post-content {
+            padding: 30px;
+        }
+        
+        .post-meta {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+            color: #666;
+            font-size: 14px;
+            gap: 15px;
+        }
+        
+        .post-meta span {
+            display: flex;
+            align-items: center;
+        }
+        
+        .post-meta i {
+            margin-right: 5px;
+            color: var(--primary);
+        }
+        
+        .post-title {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--dark);
+            transition: var(--transition);
+        }
+        
+        .post-title a:hover {
+            color: var(--accent);
+        }
+        
+        .post-excerpt {
+            margin-bottom: 25px;
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            font-weight: 600;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        .read-more i {
+            margin-left: 5px;
+            transition: var(--transition);
+        }
+        
+        .read-more:hover {
+            color: var(--accent);
+        }
+        
+        .read-more:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* Sidebar */
+        .sidebar-widget {
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+        
+        .sidebar-widget:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .widget-title {
+            font-size: 20px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--light);
+            color: var(--dark);
+            position: relative;
+        }
+        
+        .widget-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+        
+        .about-widget {
+            text-align: center;
+        }
+        
+        .about-widget img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            margin: 0 auto 20px;
+            border: 5px solid var(--secondary);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+        
+        .about-widget:hover img {
+            transform: rotate(5deg) scale(1.05);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .about-widget h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .about-widget p {
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--light);
+            border-radius: 50%;
+            color: var(--dark);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            color: white;
+            transform: translateY(-5px);
+        }
+        
+        .social-links a:hover::before {
+            opacity: 1;
+        }
+        
+        .social-links i {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .popular-posts .post-item {
+            display: flex;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            transition: var(--transition);
+        }
+        
+        .popular-posts .post-item:hover {
+            transform: translateX(10px);
+        }
+        
+        .popular-posts .post-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .popular-posts .post-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            margin-right: 15px;
+            flex-shrink: 0;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .popular-posts .post-item:hover .post-image {
+            transform: scale(1.1);
+        }
+        
+        .popular-posts .post-title {
+            font-size: 16px;
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+        
+        .popular-posts .post-date {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .categories-list {
+            list-style: none;
+        }
+        
+        .categories-list li {
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            transition: var(--transition);
+        }
+        
+        .categories-list li:hover {
+            transform: translateX(10px);
+        }
+        
+        .categories-list li:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .categories-list a {
+            display: flex;
+            justify-content: space-between;
+            color: #555;
+            align-items: center;
+        }
+        
+        .categories-list a:hover {
+            color: var(--primary);
+        }
+        
+        .categories-list span {
+            background-color: var(--light);
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 12px;
+            transition: var(--transition);
+        }
+        
+        .categories-list a:hover span {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tag {
+            display: inline-block;
+            padding: 5px 15px;
+            background-color: var(--light);
+            color: #555;
+            border-radius: 20px;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+        
+        .tag:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        /* Newsletter */
+        .newsletter-form {
+            margin-top: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+            position: relative;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: var(--transition);
+            background-color: #f9f9f9;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.1);
+            background-color: white;
+        }
+        
+        .newsletter-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .newsletter-btn:hover {
+            background: linear-gradient(45deg, var(--secondary), var(--primary));
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
+        }
+        
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+        
+        .page-numbers {
+            display: flex;
+            list-style: none;
+            gap: 5px;
+        }
+        
+        .page-numbers a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            color: #555;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .page-numbers a:hover, .page-numbers a.active {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(108, 92, 231, 0.3);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 80px 0 30px;
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--primary));
+            border-radius: 3px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+            transition: var(--transition);
+        }
+        
+        .footer-links li:hover {
+            transform: translateX(5px);
+        }
+        
+        .footer-links a {
+            color: #adb5bd;
+            display: block;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .footer-about p {
+            margin-bottom: 20px;
+            color: #adb5bd;
+        }
+        
+        .footer-contact p {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #adb5bd;
+        }
+        
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--accent);
+            width: 20px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #adb5bd;
+            font-size: 14px;
+        }
+        
+        .footer-bottom a {
+            color: var(--accent);
+        }
+        
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            box-shadow: 0 5px 20px rgba(108, 92, 231, 0.3);
+            z-index: 999;
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(108, 92, 231, 0.4);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+            100% {
+                transform: translateY(0) rotate(360deg);
+            }
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 992px) {
+            .main {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                position: static;
+                margin-top: 40px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background-color: white;
+                flex-direction: column;
+                padding: 80px 30px;
+                box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+                transition: var(--transition);
+                z-index: 1000;
+            }
+            
+            nav ul.active {
+                right: 0;
+            }
+            
+            nav ul li {
+                margin: 15px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero {
+                padding: 100px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .post-image-container {
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                padding: 80px 0;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+            }
+            
+            .post-content {
+                padding: 20px;
+            }
+            
+            .post-title {
+                font-size: 24px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <div class="header-container">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-camera-retro"></i>
+                    Екатерина<span>Смирнова</span>
+                </a>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <nav>
+                    <ul id="mainMenu">
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="about.html">Обо мне</a></li>
+                        <li><a href="travel.html">Путешествия</a></li>
+                        <li><a href="photography.html">Фотография</a></li>
+                        <li><a href="contact.html">Контакты</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="floating-elements">
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+        </div>
+        
+        <div class="hero-content">
+            <h1>Открывая мир через объектив</h1>
+            <p>Добро пожаловать в мой блог о путешествиях и фотографии. Здесь я делюсь своими приключениями, советами и вдохновением для ваших следующих поездок.</p>
+            <a href="#featured" class="btn">Начать чтение <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <main class="main">
+            <!-- Content -->
+            <div class="content" id="featured">
+                <!-- Featured Post -->
+                <article class="post">
+                    <div class="post-image-container">
+                        <img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1368&q=80" alt="Горы Норвегии" class="post-image">
+                        <span class="post-category">Путешествия</span>
+                    </div>
+                    
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span><i class="far fa-user"></i> Екатерина Смирнова</span>
+                            <span><i class="far fa-calendar-alt"></i> 15 июня 2023</span>
+                            <span><i class="far fa-comments"></i> 24 комментария</span>
+                        </div>
+                        
+                        <h2 class="post-title"><a href="post.html">Фьорды Норвегии: путешествие в страну троллей</a></h2>
+                        
+                        <p class="post-excerpt">Норвежские фьорды — это нечто большее, чем просто красивые пейзажи. Это место, где природа демонстрирует свою мощь и величие. В этой статье я расскажу о своём недельном путешествии по самым живописным уголкам Норвегии, поделюсь маршрутом и советами по фотографии в условиях северного климата.</p>
+                        
+                        <a href="post.html" class="read-more">Читать далее <i class="fas fa-long-arrow-alt-right"></i></a>
+                    </div>
+                </article>
+                
+                <!-- Post 2 -->
+                <article class="post">
+                    <div class="post-image-container">
+                        <img src="https://images.unsplash.com/photo-1493863641943-9b68992a8d07?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1458&q=80" alt="Фотоаппарат" class="post-image">
+                        <span class="post-category">Фотография</span>
+                    </div>
+                    
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span><i class="far fa-user"></i> Екатерина Смирнова</span>
+                            <span><i class="far fa-calendar-alt"></i> 5 июня 2023</span>
+                            <span><i class="far fa-comments"></i> 18 комментариев</span>
+                        </div>
+                        
+                        <h2 class="post-title"><a href="post.html">Мой набор для путешествий: камера и объективы</a></h2>
+                        
+                        <p class="post-excerpt">Часто меня спрашивают, какое оборудование я беру с собой в поездки. В этой статье я подробно расскажу о своём наборе фототехники, аксессуарах, которые действительно полезны в путешествиях, и как выбрать оптимальный комплект для разных видов съёмки.</p>
+                        
+                        <a href="post.html" class="read-more">Читать далее <i class="fas fa-long-arrow-alt-right"></i></a>
+                    </div>
+                </article>
+                
+                <!-- Post 3 -->
+                <article class="post">
+                    <div class="post-image-container">
+                        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Бали" class="post-image">
+                        <span class="post-category">Путешествия</span>
+                    </div>
+                    
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span><i class="far fa-user"></i> Екатерина Смирнова</span>
+                            <span><i class="far fa-calendar-alt"></i> 22 мая 2023</span>
+                            <span><i class="far fa-comments"></i> 32 комментария</span>
+                        </div>
+                        
+                        <h2 class="post-title"><a href="post.html">Бали: не только пляжи. Скрытые места острова</a></h2>
+                        
+                        <p class="post-excerpt">Когда говорят о Бали, сразу представляются роскошные пляжи и океан. Но этот остров может предложить гораздо больше! В этой статье я покажу вам Бали, который редко видят туристы — древние храмы, рисовые террасы, местные деревни и потрясающие водопады в глубине острова.</p>
+                        
+                        <a href="post.html" class="read-more">Читать далее <i class="fas fa-long-arrow-alt-right"></i></a>
+                    </div>
+                </article>
+                
+                <!-- Pagination -->
+                <div class="pagination">
+                    <ul class="page-numbers">
+                        <li><a href="#" class="active">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#"><i class="fas fa-ellipsis-h"></i></a></li>
+                        <li><a href="#">10</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <!-- About Widget -->
+                <div class="sidebar-widget about-widget">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Екатерина Смирнова">
+                    <h3>Екатерина Смирнова</h3>
+                    <p>Фотограф и путешественник. Исследую мир и делюсь своими историями через фотографии и статьи.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Popular Posts -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Популярные посты</h3>
+                    
+                    <div class="popular-posts">
+                        <div class="post-item">
+                            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Исландия" class="post-image">
+                            <div>
+                                <a href="#" class="post-title">Исландия: 10 мест, которые стоит увидеть</a>
+                                <div class="post-date">12 апреля 2023</div>
+                            </div>
+                        </div>
+                        
+                        <div class="post-item">
+                            <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Портрет" class="post-image">
+                            <div>
+                                <a href="#" class="post-title">Как фотографировать портреты в путешествиях</a>
+                                <div class="post-date">28 марта 2023</div>
+                            </div>
+                        </div>
+                        
+                        <div class="post-item">
+                            <img src="https://images.unsplash.com/photo-1518391846015-55a9cc003b25?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Япония" class="post-image">
+                            <div>
+                                <a href="#" class="post-title">Весна в Японии: путешествие по сакуре</a>
+                                <div class="post-date">15 марта 2023</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Categories -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Категории</h3>
+                    
+                    <ul class="categories-list">
+                        <li><a href="#">Путешествия <span>24</span></a></li>
+                        <li><a href="#">Фотография <span>18</span></a></li>
+                        <li><a href="#">Советы <span>12</span></a></li>
+                        <li><a href="#">Оборудование <span>9</span></a></li>
+                        <li><a href="#">Личное <span>7</span></a></li>
+                    </ul>
+                </div>
+                
+                <!-- Tags -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Теги</h3>
+                    
+                    <div class="tags">
+                        <a href="#" class="tag">#горы</a>
+                        <a href="#" class="tag">#пейзажи</a>
+                        <a href="#" class="tag">#Европа</a>
+                        <a href="#" class="tag">#советы</a>
+                        <a href="#" class="tag">#камера</a>
+                        <a href="#" class="tag">#Азия</a>
+                        <a href="#" class="tag">#природа</a>
+                        <a href="#" class="tag">#город</a>
+                    </div>
+                </div>
+                
+                <!-- Newsletter -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Подписаться на новости</h3>
+                    <p>Получайте новые статьи и фотографии прямо на почту</p>
+                    
+                    <form class="newsletter-form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Ваше имя">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Ваш email">
+                        </div>
+                        <button type="submit" class="newsletter-btn">Подписаться</button>
+                    </form>
+                </div>
+            </aside>
+        </main>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column footer-about">
+                    <h3>О блоге</h3>
+                    <p>Этот блог создан для тех, кто любит путешествия и фотографию. Здесь вы найдёте вдохновение, практические советы и личные истории из моих поездок по всему миру.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Быстрые ссылки</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Главная</a></li>
+                        <li><a href="#">Обо мне</a></li>
+                        <li><a href="#">Путешествия</a></li>
+                        <li><a href="#">Фотография</a></li>
+                        <li><a href="#">Контакты</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Категории</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Путешествия по Европе</a></li>
+                        <li><a href="#">Азиатские приключения</a></li>
+                        <li><a href="#">Фотосоветы</a></li>
+                        <li><a href="#">Обзоры оборудования</a></li>
+                        <li><a href="#">Личные истории</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column footer-contact">
+                    <h3>Контакты</h3>
+                    <p><i class="fas fa-envelope"></i> hello@smirnova-travel.com</p>
+                    <p><i class="fas fa-phone"></i> +7 (123) 456-78-90</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Москва, ул. Путешественников, 15</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Блог Екатерины Смирновой. Все права защищены. | Разработано с <i class="fas fa-heart" style="color: var(--accent);"></i> для путешественников</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Back to top button -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+    
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainMenu = document.getElementById('mainMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainMenu.classList.toggle('active');
+            mobileMenuBtn.innerHTML = mainMenu.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Header scroll effect
+        const header = document.getElementById('header');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Back to top button
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        });
+        
+        // Smooth scrolling for all links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (mainMenu.classList.contains('active')) {
+                        mainMenu.classList.remove('active');
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                }
+            });
+        });
+        
+        // Animation on scroll
+        const animateOnScroll = () => {
+            const posts = document.querySelectorAll('.post');
+            
+            posts.forEach(post => {
+                const postPosition = post.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if (postPosition < screenPosition) {
+                    post.style.opacity = '1';
+                    post.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Set initial state for animation
+        document.querySelectorAll('.post').forEach(post => {
+            post.style.opacity = '0';
+            post.style.transform = 'translateY(50px)';
+            post.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+        });
+        
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>
