@@ -48,3 +48,20 @@
     });
   });
 })();
+
+/* переключатель тарифов */
+(function(){
+  const tabs = document.querySelectorAll('.price-tab');
+  if(!tabs.length) return;
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => {
+        t.classList.toggle('is-on', t === tab);
+        t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
+      });
+      document.querySelectorAll('.price-panel').forEach(p => {
+        p.classList.toggle('is-on', p.id === 'panel-' + tab.dataset.tab);
+      });
+    });
+  });
+})();

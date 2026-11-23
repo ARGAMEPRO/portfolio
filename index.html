@@ -233,8 +233,16 @@
         </div>
       </article>
       <article class="work reveal">
-        <div class="preview has-img">
-          <img class="preview-img" src="assets/react/01.png" width="1200" height="700" alt="Дашборд метрик" loading="lazy">
+        <div class="preview pv-dash">
+          <div class="pv-top"><i></i><i></i><i></i></div>
+          <div class="dash-tiles">
+            <div><span>заказы</span><b>1 240</b></div>
+            <div><span>конверсия</span><b>18,4 %</b></div>
+            <div><span>чек</span><b>2 340 ₽</b></div>
+          </div>
+          <svg viewBox="0 0 300 74" preserveAspectRatio="none">
+            <polyline points="0,60 30,48 60,54 90,34 120,42 150,24 180,32 210,16 240,22 270,10 300,16"/>
+          </svg>
         </div>
         <div class="work-body">
           <div class="work-top"><h3>Дашборд метрик</h3><span class="year">2025</span></div>
@@ -246,8 +254,15 @@
       </article>
 
       <article class="work reveal">
-        <div class="preview has-img">
-          <img class="preview-img" src="assets/react/02.png" width="1200" height="700" alt="Каталог с фильтрами" loading="lazy">
+        <div class="preview pv-cat">
+          <div class="pv-top"><i></i><i></i><i></i></div>
+          <div class="cat-filters"><span class="on">все</span><span>в наличии</span><span>дешевле</span></div>
+          <div class="cat-grid">
+            <div class="cat-card"><i></i><b>Подшипник 6202</b><em>340 ₽</em></div>
+            <div class="cat-card"><i></i><b>Ремень 1200</b><em>590 ₽</em></div>
+            <div class="cat-card"><i></i><b>Сальник 35×52</b><em>210 ₽</em></div>
+            <div class="cat-card"><i></i><b>Шкив 80 мм</b><em>1 240 ₽</em></div>
+          </div>
         </div>
         <div class="work-body">
           <div class="work-top"><h3>Каталог с фильтрами</h3><span class="year">2025</span></div>
@@ -259,8 +274,16 @@
       </article>
 
       <article class="work reveal">
-        <div class="preview has-img">
-          <img class="preview-img" src="assets/react/03.png" width="1200" height="700" alt="Личный кабинет" loading="lazy">
+        <div class="preview pv-acc">
+          <div class="pv-top"><i></i><i></i><i></i></div>
+          <div class="acc-wrap">
+            <div class="acc-nav"><span class="on">Профиль</span><span>Заказы</span><span>Выход</span></div>
+            <div class="acc-main">
+              <div class="acc-head"><i class="acc-ava"></i><div><b>Дмитрий К.</b><span>заказов: 12</span></div></div>
+              <div class="acc-field"><span>имя</span><div class="acc-input">Дмитрий<i class="caret"></i></div></div>
+              <div class="acc-field"><span>телефон</span><div class="acc-input">+7 900 000-00-00</div></div>
+            </div>
+          </div>
         </div>
         <div class="work-body">
           <div class="work-top"><h3>Личный кабинет</h3><span class="year">2025</span></div>
@@ -272,8 +295,14 @@
       </article>
 
       <article class="work reveal">
-        <div class="preview has-img">
-          <img class="preview-img" src="assets/react/04.png" width="1200" height="700" alt="Форма заявки" loading="lazy">
+        <div class="preview pv-form2">
+          <div class="pv-top"><i></i><i></i><i></i></div>
+          <div class="form-wrap">
+            <div class="form-title">Заявка <span>шаг 2 из 3</span></div>
+            <div class="form-field"><span>имя</span><div>Дмитрий<i class="caret"></i></div></div>
+            <div class="form-field"><span>телефон</span><div>+7 900 000-00-00</div></div>
+            <div class="form-btn">Отправить</div>
+          </div>
         </div>
         <div class="work-body">
           <div class="work-top"><h3>Форма заявки</h3><span class="year">2025</span></div>
@@ -285,8 +314,14 @@
       </article>
 
       <article class="work reveal">
-        <div class="preview has-img">
-          <img class="preview-img" src="assets/react/05.png" width="1200" height="700" alt="Таблица с сортировкой" loading="lazy">
+        <div class="preview pv-tbl">
+          <div class="pv-top"><i></i><i></i><i></i></div>
+          <div class="tb">
+            <div class="tb-row tb-head"><span>деталь</span><span>цена ↑</span><span>статус</span></div>
+            <div class="tb-row"><span>Подшипник 6202</span><span>340 ₽</span><span class="tb-tag">в наличии</span></div>
+            <div class="tb-row"><span>Ремень 1200</span><span>590 ₽</span><span class="tb-tag">в наличии</span></div>
+            <div class="tb-row"><span>Сальник 35×52</span><span>210 ₽</span><span class="tb-tag off">под заказ</span></div>
+          </div>
         </div>
         <div class="work-body">
           <div class="work-top"><h3>Таблица с сортировкой</h3><span class="year">2025</span></div>
@@ -350,44 +385,83 @@
       <p class="eyebrow">услуги</p>
       <h2>Сколько стоит<br><span class="hand">и сколько ждать</span></h2>
     </div>
-    <div class="price-table reveal">
-      <div class="price-row price-head">
-        <span>Услуга</span><span>Что входит</span><span>Срок</span><span>Цена</span>
-      </div>
-      <div class="price-row">
-        <span class="price-name">Лендинг</span>
-        <span class="price-desc">Вёрстка по макету, адаптив, форма заявки</span>
-        <span class="price-term">3 дня</span>
-        <span class="price-sum">от 3 000 ₽</span>
-      </div>
-      <div class="price-row">
-        <span class="price-name">Доработка сайта</span>
-        <span class="price-desc">Правки, карточки товаров, фильтр, метрика</span>
-        <span class="price-term">1–2 дня</span>
-        <span class="price-sum">от 1 500 ₽</span>
-      </div>
-      <div class="price-row">
-        <span class="price-name">Интерфейс на React</span>
-        <span class="price-desc">SPA, роутинг, подключение к вашему API</span>
-        <span class="price-term">от 5 дней</span>
-        <span class="price-sum">от 8 000 ₽</span>
-      </div>
-      <div class="price-row">
-        <span class="price-name">Telegram-бот</span>
-        <span class="price-desc">Заявки, уведомления, база, админ-команды</span>
-        <span class="price-term">3–7 дней</span>
-        <span class="price-sum">от 2 000 ₽</span>
-      </div>
-      <div class="price-row">
-        <span class="price-name">Мелкие правки</span>
-        <span class="price-desc">Тексты, отступы, кнопки, мобильная версия</span>
-        <span class="price-term">1 день</span>
-        <span class="price-sum">800 ₽/час</span>
+    <div class="price-tabs reveal" role="tablist" aria-label="Направления">
+      <button class="price-tab is-on" role="tab" aria-selected="true" data-tab="sites">Сайты</button>
+      <button class="price-tab" role="tab" aria-selected="false" data-tab="react">React</button>
+      <button class="price-tab" role="tab" aria-selected="false" data-tab="bots">Telegram-боты</button>
+    </div>
+    <div class="price-panels reveal">
+      <div class="price-panel is-on" id="panel-sites" role="tabpanel">
+        <div class="price-table">
+          <div class="price-row price-head"><span>Пакет</span><span>Что входит</span><span>Срок</span><span>Цена</span></div>
+        <div class="price-row">
+          <span class="price-name">Эконом</span>
+          <span class="price-desc">Лендинг по макету: вёрстка, адаптив, форма заявки</span>
+          <span class="price-term">3 дня</span>
+          <span class="price-sum">2 000 ₽</span>
+        </div>
+        <div class="price-row">
+          <span class="price-name">Стандарт</span>
+          <span class="price-desc">Сайт из 2–3 страниц, анимации, метатеги для поиска</span>
+          <span class="price-term">5 дней</span>
+          <span class="price-sum">3 600 ₽</span>
+        </div>
+        <div class="price-row">
+          <span class="price-name">Бизнес</span>
+          <span class="price-desc">Каталог, фильтры, админка, подключение к вашему API</span>
+          <span class="price-term">10 дней</span>
+          <span class="price-sum">15 000 ₽</span>
+        </div>
+        </div>
+      </div><div class="price-panel" id="panel-react" role="tabpanel">
+        <div class="price-table">
+          <div class="price-row price-head"><span>Пакет</span><span>Что входит</span><span>Срок</span><span>Цена</span></div>
+        <div class="price-row">
+          <span class="price-name">Эконом</span>
+          <span class="price-desc">Одна страница на React: компоненты, адаптив, сборка Vite</span>
+          <span class="price-term">4 дня</span>
+          <span class="price-sum">2 400 ₽</span>
+        </div>
+        <div class="price-row">
+          <span class="price-name">Стандарт</span>
+          <span class="price-desc">Роутинг, подключение к API, сборка и перенос на хостинг</span>
+          <span class="price-term">6 дней</span>
+          <span class="price-sum">4 000 ₽</span>
+        </div>
+        <div class="price-row">
+          <span class="price-name">Бизнес</span>
+          <span class="price-desc">Авторизация, роли, кабинет, обработка ошибок и загрузок</span>
+          <span class="price-term">10 дней</span>
+          <span class="price-sum">12 000 ₽</span>
+        </div>
+        </div>
+      </div><div class="price-panel" id="panel-bots" role="tabpanel">
+        <div class="price-table">
+          <div class="price-row price-head"><span>Пакет</span><span>Что входит</span><span>Срок</span><span>Цена</span></div>
+        <div class="price-row">
+          <span class="price-name">Эконом</span>
+          <span class="price-desc">Меню, кнопки, заявка приходит вам в чат</span>
+          <span class="price-term">1 день</span>
+          <span class="price-sum">2 000 ₽</span>
+        </div>
+        <div class="price-row">
+          <span class="price-name">Стандарт</span>
+          <span class="price-desc">Заявки в базе, статусы, уведомления, выгрузка в Excel</span>
+          <span class="price-term">3 дня</span>
+          <span class="price-sum">3 600 ₽</span>
+        </div>
+        <div class="price-row">
+          <span class="price-name">Бизнес</span>
+          <span class="price-desc">Приём оплаты, админ-панель, роли, рассылки подписчикам</span>
+          <span class="price-term">10 дней</span>
+          <span class="price-sum">25 000 ₽</span>
+        </div>
+        </div>
       </div>
     </div>
-    <p class="price-note reveal">Цены без посредников. Точную сумму называю, когда вижу макет и объём:
-      иногда выходит дешевле, чем в таблице, иногда дороже — если внутри оказывается не одна страница,
-      а три.</p>
+    <p class="price-note reveal">Это цены из моих кворков на Kwork, без наценки за «срочность» и переписку.
+      Мелкие правки — 800 ₽/час. Точную сумму называю, когда вижу макет и объём: иногда выходит дешевле,
+      чем в таблице, иногда дороже — если внутри оказывается не одна страница, а три.</p>
   </section>
 
   <section class="reviews" id="reviews">
