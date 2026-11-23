@@ -357,7 +357,7 @@ h2 .hand{margin-top:-9px}
 .price-note{margin-top:18px;font-size:13px;color:var(--dim);max-width:72ch}
 
 /* ---------- reviews ---------- */
-.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.reviews-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;align-items:stretch}
 .review{
   padding:24px 22px;border:1px solid var(--line);border-radius:var(--radius);
   background:var(--panel);display:flex;flex-direction:column;justify-content:space-between;gap:18px;
