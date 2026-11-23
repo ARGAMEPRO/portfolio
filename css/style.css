@@ -502,5 +502,6 @@ h2 .hand{margin-top:-9px}
 
 
 /* ---------- превью работ картинкой ---------- */
-.preview.has-img{min-height:0;padding:0;aspect-ratio:12/7}
-.preview-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.preview.has-img{min-height:210px;padding:0}
+.preview-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+@media (max-width:900px){.preview.has-img{min-height:200px}}
