@@ -57,10 +57,7 @@ section{margin-bottom:110px}
   background:rgba(255,255,255,.03);backdrop-filter:blur(8px);
   font-size:14px;letter-spacing:.02em;color:#dfe2ea;
 }
-.badge-icon{
-  font-family:'JetBrains Mono',monospace;font-size:12px;color:#b8bac0;
-  border-right:1px solid var(--line);padding-right:10px;
-}
+.badge-logo{height:19px;width:auto;display:block;opacity:.94}
 .nav{display:flex;gap:26px;font-size:14px;color:var(--muted)}
 .nav a{transition:color .2s}
 .nav a:hover{color:#fff}
@@ -153,9 +150,9 @@ h2 .hand{margin-top:-9px}
 }
 .avatar{
   width:64px;height:64px;border-radius:20px;display:grid;place-items:center;
-  font-weight:800;font-size:26px;color:#0b0b10;
-  background:linear-gradient(145deg,#f4f5f7,#bfc1c7);margin-bottom:20px;
+  background:rgba(255,255,255,.06);border:1px solid var(--line);margin-bottom:20px;
 }
+.avatar img{width:28px;height:auto;display:block;opacity:.95}
 .about-card-row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:13.5px}
 .about-card-row span{color:var(--dim)}
 .about-card-row b{font-weight:600;color:#e7e9f0}
