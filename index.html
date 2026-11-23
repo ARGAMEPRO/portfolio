@@ -1,981 +1,368 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Арсений | Junior Web Developer</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #4361ee;
-            --secondary: #3a0ca3;
-            --accent: #f72585;
-            --dark: #1a1a2e;
-            --light: #f8f9fa;
-            --gray: #6c757d;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            transition: all 0.3s ease;
-        }
-        
-        body {
-            font-family: 'Open Sans', sans-serif;
-            background-color: var(--light);
-            color: var(--dark);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Header */
-        header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 100px 0 150px;
-            text-align: center;
-            position: relative;
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-            margin-bottom: 60px;
-        }
-        
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.05)" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>');
-            background-size: cover;
-            opacity: 0.1;
-        }
-        
-        .header-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .profile-image {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid rgba(255, 255, 255, 0.2);
-            margin-bottom: 25px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-        
-        h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-        
-        .tagline {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-bottom: 25px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .cta-button {
-            display: inline-block;
-            background: var(--accent);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            margin: 10px;
-            box-shadow: 0 4px 15px rgba(247, 37, 133, 0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(247, 37, 133, 0.4);
-            background: #ff0676;
-        }
-        
-        .secondary-button {
-            background: transparent;
-            border: 2px solid white;
-            box-shadow: none;
-        }
-        
-        .secondary-button:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-        
-        /* Navigation */
-        nav {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 10px;
-        }
-        
-        .logo {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--primary);
-            text-decoration: none;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-links li {
-            margin-left: 30px;
-        }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 600;
-            padding: 5px 0;
-            position: relative;
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--dark);
-            cursor: pointer;
-        }
-        
-        /* Sections */
-        section {
-            padding: 80px 0;
-        }
-        
-        .section-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.2rem;
-            text-align: center;
-            margin-bottom: 50px;
-            position: relative;
-            color: var(--dark);
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--accent);
-            border-radius: 2px;
-        }
-        
-        .section-subtitle {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 40px;
-            color: var(--gray);
-            font-size: 1.1rem;
-        }
-        
-        /* About */
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        
-        .about-text {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .about-text p {
-            margin-bottom: 20px;
-            color: var(--gray);
-        }
-        
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .skill {
-            background: rgba(67, 97, 238, 0.1);
-            color: var(--primary);
-            padding: 8px 15px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-        
-        /* Skills Section */
-        .skills-section {
-            background-color: white;
-            border-radius: 15px;
-            padding: 50px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-        }
-        
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 30px;
-        }
-        
-        .skill-card {
-            background: var(--light);
-            border-radius: 10px;
-            padding: 30px;
-            text-align: center;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(67, 97, 238, 0.1);
-        }
-        
-        .skill-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(67, 97, 238, 0.1);
-            border-color: rgba(67, 97, 238, 0.3);
-        }
-        
-        .skill-icon {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-        
-        .skill-card h3 {
-            font-family: 'Montserrat', sans-serif;
-            margin-bottom: 15px;
-            color: var(--dark);
-        }
-        
-        .skill-card p {
-            color: var(--gray);
-            font-size: 0.95rem;
-        }
-        
-        .skill-level {
-            height: 6px;
-            background: rgba(67, 97, 238, 0.1);
-            border-radius: 3px;
-            margin-top: 20px;
-            overflow: hidden;
-        }
-        
-        .skill-level-bar {
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            border-radius: 3px;
-        }
-        
-        /* Projects */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-        
-        .project-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-        
-        .project-image {
-            height: 200px;
-            overflow: hidden;
-        }
-        
-        .project-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .project-card:hover .project-image img {
-            transform: scale(1.1);
-        }
-        
-        .project-info {
-            padding: 25px;
-        }
-        
-        .project-info h3 {
-            font-family: 'Montserrat', sans-serif;
-            margin-bottom: 10px;
-            color: var(--dark);
-        }
-        
-        .project-info p {
-            color: var(--gray);
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-        }
-        
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        
-        .project-tag {
-            background: #e9ecef;
-            color: #495057;
-            padding: 5px 12px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-        }
-        
-        .project-links {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .project-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 8px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-        
-        .project-link.primary {
-            background: var(--primary);
-            color: white;
-        }
-        
-        .project-link.secondary {
-            border: 2px solid var(--primary);
-            color: var(--primary);
-        }
-        
-        .project-link:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .project-link.primary:hover {
-            background: var(--secondary);
-        }
-        
-        .project-link.secondary:hover {
-            background: var(--primary);
-            color: white;
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 60px 0 30px;
-            text-align: center;
-        }
-        
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            text-align: left;
-            margin-bottom: 40px;
-        }
-        
-        .footer-column h3 {
-            font-family: 'Montserrat', sans-serif;
-            margin-bottom: 20px;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background: var(--accent);
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-        
-        .footer-links a {
-            color: #adb5bd;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        .footer-links a:hover {
-            color: white;
-        }
-        
-        .contact-info {
-            list-style: none;
-        }
-        
-        .contact-info li {
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #adb5bd;
-        }
-        
-        .contact-info i {
-            width: 20px;
-            color: var(--accent);
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .social-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            transition: all 0.3s ease;
-        }
-        
-        .social-link:hover {
-            background: var(--accent);
-            transform: translateY(-3px);
-        }
-        
-        .copyright {
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #adb5bd;
-            font-size: 0.9rem;
-        }
-        
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-        
-        .animated {
-            animation: fadeInUp 1s ease forwards;
-        }
-        
-        .delay-1 {
-            animation-delay: 0.2s;
-        }
-        
-        .delay-2 {
-            animation-delay: 0.4s;
-        }
-        
-        .delay-3 {
-            animation-delay: 0.6s;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                position: fixed;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background: white;
-                flex-direction: column;
-                align-items: center;
-                padding: 20px 0;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-                z-index: 99;
-            }
-            
-            .nav-links.active {
-                display: flex;
-                animation: fadeIn 0.5s ease;
-            }
-            
-            .nav-links li {
-                margin: 15px 0;
-                margin-left: 0;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            header {
-                padding: 80px 0 120px;
-                clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
-            }
-            
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .section-title {
-                font-size: 1.8rem;
-            }
-            
-            section {
-                padding: 60px 0;
-            }
-            
-            .skills-section {
-                padding: 30px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Арсений — веб-разработчик</title>
+<meta name="description" content="Портфолио: сайты, интерфейсы на React и небольшие сервисы на Python.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Playfair+Display:ital,wght@1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <nav>
-        <div class="container nav-container">
-            <a href="#" class="logo">Арсений</a>
-            <button class="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
-            </button>
-            <ul class="nav-links">
-                <li><a href="#about">Обо мне</a></li>
-                <li><a href="#skills">Навыки</a></li>
-                <li><a href="#projects">Проекты</a></li>
-            </ul>
-        </div>
-    </nav>
-    
-    <header>
-        <div class="header-content">
-            <img src="IMG_2850.png" alt="Арсений" class="profile-image">
-            <h1>Арсений</h1>
-            <p class="tagline">Junior Web Developer (HTML, CSS, JavaScsript, Telegram Bots)</p>
-            <div>
-                <a href="#projects" class="cta-button">Мои работы</a>
+
+<div class="bg">
+  <div class="bg-grid"></div>
+  <div class="glow glow-1"></div>
+  <div class="glow glow-2"></div>
+  <div class="glow glow-3"></div>
+</div>
+
+<header class="top">
+  <a class="badge" href="#top">
+    <span class="badge-icon">&lt;/&gt;</span>
+    <span>портфолио</span>
+  </a>
+  <nav class="nav">
+    <a href="#works">работы</a>
+    <a href="#about">обо мне</a>
+    <a href="#contact">контакты</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <p class="eyebrow reveal">веб-разработка · сделано руками</p>
+    <h1 class="reveal">
+      Сайты и сервисы
+      <span class="hand">с нуля и до запуска</span>
+    </h1>
+    <p class="lead reveal">
+      Меня зовут Арсений. Собираю сайты, интерфейсы на React и небольшие сервисы на Python.
+      От вёрстки и логики на клиенте до базы данных и публикации на хостинге.
+    </p>
+    <div class="actions reveal">
+      <a class="btn btn-primary" href="#works">Смотреть работы</a>
+      <a class="btn btn-ghost" href="https://t.me/arsusha04" target="_blank" rel="noopener">Написать в Telegram</a>
+    </div>
+
+    <ul class="facts reveal">
+      <li><b>03</b><span>года пишу код</span></li>
+      <li><b>05</b><span>проектов в работе</span></li>
+      <li><b>1</b><span>человек в команде</span></li>
+    </ul>
+  </section>
+
+  <section class="strip reveal">
+    <span class="strip-title">Стек</span>
+    <ul class="stack">
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>JavaScript</li>
+      <li>React</li>
+      <li>Python</li>
+      <li>FastAPI</li>
+      <li>Docker</li>
+      <li>Telegram</li>
+    </ul>
+  </section>
+
+  <section class="cards reveal">
+    <article class="card">
+      <span class="ico">⌘</span>
+      <h3>Чистый код</h3>
+      <p>Без конструкторов и лишних библиотек. Проект открывается, собирается и живёт на любом хостинге.</p>
+    </article>
+    <article class="card">
+      <span class="ico">▭</span>
+      <h3>Адаптив</h3>
+      <p>Проверяю на телефоне, планшете и десктопе. Не «съезжает» на узком экране.</p>
+    </article>
+    <article class="card">
+      <span class="ico">◎</span>
+      <h3>Скорость</h3>
+      <p>Лёгкие страницы, оптимизированные картинки и шрифты. Ничего лишнего в загрузке.</p>
+    </article>
+    <article class="card">
+      <span class="ico">↗</span>
+      <h3>Под ключ</h3>
+      <p>Вёрстка, подключение формы, домен, хостинг, метрика. Дальше вы правите сами.</p>
+    </article>
+  </section>
+
+  <section class="about" id="about">
+    <div class="about-text reveal">
+      <p class="eyebrow">обо мне</p>
+      <h2>Делаю сам,<br><span class="hand">от начала до конца</span></h2>
+      <p>
+        Начинал с небольших программ для себя: скрипты, боты, страницы. Потом перешёл к проектам,
+        где нужен не один файл, а связка: интерфейс, сервер, база, запуск.
+      </p>
+      <p>
+        Работаю без команды. Сам разбираюсь в задаче, выбираю стек, пишу код, проверяю и поддерживаю
+        то, что сделал. Если задача не моя — говорю об этом сразу, а не берусь за всё подряд.
+      </p>
+      <ul class="check">
+        <li>Вёрстка по макету и с нуля</li>
+        <li>Интерфейсы на React с роутингом и API</li>
+        <li>Серверная часть на Python</li>
+        <li>Боты, интеграции, автоматизация</li>
+      </ul>
+    </div>
+    <aside class="about-card reveal">
+      <div class="avatar">А</div>
+      <div class="about-card-row"><span>Город</span><b>Курск</b></div>
+      <div class="about-card-row"><span>Формат</span><b>удалённо</b></div>
+      <div class="about-card-row"><span>Связь</span><b>Telegram</b></div>
+      <p class="about-note">Беру задачи целиком и отвечаю в течение дня.</p>
+    </aside>
+  </section>
+
+  <section class="works" id="works">
+    <div class="works-head reveal">
+      <p class="eyebrow">работы</p>
+      <h2>Пять проектов,<br><span class="hand">которые я собрал</span></h2>
+    </div>
+
+    <div class="grid">
+
+      <article class="work work-wide reveal">
+        <div class="preview pv-map">
+          <div class="pv-top"><i></i><i></i><i></i></div>
+          <div class="pv-map-body">
+            <div class="pv-dot" style="left:22%;top:38%"></div>
+            <div class="pv-dot" style="left:44%;top:62%"></div>
+            <div class="pv-dot hot" style="left:63%;top:34%"></div>
+            <div class="pv-dot" style="left:76%;top:58%"></div>
+            <div class="pv-panel">
+              <span>очаг</span><b>+12 мин</b>
             </div>
+          </div>
         </div>
-    </header>
-    
-    <section id="about">
-        <div class="container">
-            <h2 class="section-title">Обо мне</h2>
-            <div class="about-content">
-                <div class="about-text animated">
-                    <p>Меня зовут Арсений. Программированием и веб-разработкой я увлекаюсь уже не один год. В процессе обучения и практики я освоил создание простых и функциональных сайтов, а также базовые принципы веб-дизайна.</p>
-                    <p>Умею работать с HTML, CSS и базовым JavaScript, а также знаком с адаптивной версткой. Имею опыт разработки Telegram ботов на Python. Регулярно совершенствую свои навыки и стремлюсь развиваться в сфере frontend-разработки.</p>
-                    <p>В ближайших планах — углубленное изучение JavaScript, создание более сложных интерфейсов и освоение современных библиотек и фреймворков.</p>
-                </div>
-            </div>
+        <div class="work-body">
+          <div class="work-top"><h3>КЕДР</h3><span class="year">2026</span></div>
+          <p class="work-sub">Система мониторинга лесных пожаров</p>
+          <p>Детекция огня и дыма на фото, видео и RTSP, карта очагов, расчёт распространения с учётом ветра и рельефа, PDF-донесения. Собран целиком: сервер, интерфейс, Docker.</p>
+          <ul class="tags"><li>FastAPI</li><li>PostgreSQL</li><li>React</li><li>YOLOv11</li><li>MapLibre</li></ul>
+          <p class="work-foot"><a href="https://github.com/ARGAMEPRO/KEDER" target="_blank" rel="noopener">Код на GitHub</a></p>
         </div>
-    </section>
-    
-    <section id="skills">
-        <div class="container">
-            <h2 class="section-title">Мои навыки</h2>
-            <p class="section-subtitle">Технологии и инструменты, которые я использую в своей работе</p>
-            
-            <div class="skills-section animated">
-                <div class="skills-grid">
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fab fa-html5"></i>
-                        </div>
-                        <h3>HTML5</h3>
-                        <p>Семантическая верстка, доступность, валидный код</p>
-                        <div class="skill-level">
-                            <div class="skill-level-bar" style="width: 90%"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fab fa-css3-alt"></i>
-                        </div>
-                        <h3>CSS3</h3>
-                        <p>Flexbox, Grid, анимации, адаптивный дизайн</p>
-                        <div class="skill-level">
-                            <div class="skill-level-bar" style="width: 85%"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fab fa-js"></i>
-                        </div>
-                        <h3>JavaScript</h3>
-                        <p>Базовый JS, DOM-манипуляции, простые скрипты</p>
-                        <div class="skill-level">
-                            <div class="skill-level-bar" style="width: 70%"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fab fa-telegram"></i>
-                        </div>
-                        <h3>Telegram Bots</h3>
-                        <p>Разработка ботов на Python с aiogram</p>
-                        <div class="skill-level">
-                            <div class="skill-level-bar" style="width: 75%"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fab fa-python"></i>
-                        </div>
-                        <h3>Python</h3>
-                        <p>Основы языка, работа с API, скрипты</p>
-                        <div class="skill-level">
-                            <div class="skill-level-bar" style="width: 65%"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fas fa-mobile-alt"></i>
-                        </div>
-                        <h3>Адаптивный дизайн</h3>
-                        <p>Mobile-first подход, медиазапросы</p>
-                        <div class="skill-level">
-                            <div class="skill-level-bar" style="width: 80%"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fab fa-git-alt"></i>
-                        </div>
-                        <h3>Git</h3>
-                        <p>Базовые команды, работа с репозиториями</p>
-                        <div class="skill-level">
-                            <div class="skill-level-bar" style="width: 60%"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fas fa-paint-brush"></i>
-                        </div>
-                        <h3>UI/UX Basics</h3>
-                        <p>Основы пользовательских интерфейсов</p>
-                        <div class="skill-level">
-                            <div class="skill-level-bar" style="width: 50%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      </article>
+
+      <article class="work reveal">
+        <div class="preview pv-voice">
+          <div class="pv-top"><i></i><i></i><i></i></div>
+          <div class="pv-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="pv-caption">слушаю…</div>
         </div>
-    </section>
-    
-    <section id="projects">
-        <div class="container">
-            <h2 class="section-title">Мои проекты</h2>
-            <p class="section-subtitle">Примеры моих работ, включая реальные проекты и учебные макеты</p>
-            
-            <div class="projects-grid">
-                <div class="project-card animated">
-                    <div class="project-image">
-                        <img src="assets/proklip.png" alt="Prklip.ru">
-                    </div>
-                    <div class="project-info">
-                        <h3>Prklip.ru</h3>
-                        <p>Действующий веб-сайт компании, разработанный мной. Включает главную страницу, а так же отдельные страницы относящиеся к компании.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">HTML</span>
-                            <span class="project-tag">CSS</span>
-                            <span class="project-tag">JavaScript</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://prklip.ru" target="_blank" class="project-link primary">Посетить сайт</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card animated delay-1">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1579389083078-4e7018379f7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Telegram Bot">
-                    </div>
-                    <div class="project-info">
-                        <h3>Telegram Бот</h3>
-                        <p>Бот для автоматизации ответов на частые вопросы с возможностью администрирования через веб-интерфейс.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Python</span>
-                            <span class="project-tag">aiogram</span>
-                            <span class="project-tag">Telegram API</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="telegram-bot.html" class="project-link secondary">Подробнее</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card animated delay-2">
-                    <div class="project-image">
-                        <img src="assets/visitka.png" alt="Сайт-визитка">
-                    </div>
-                    <div class="project-info">
-                        <h3>Сайт-визитка</h3>
-                        <p>Пример макета сайта-визитки для фотографа. Включает портфолио, информацию об услугах и контактную форму.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">HTML</span>
-                            <span class="project-tag">CSS</span>
-                            <span class="project-tag">Адаптивный дизайн</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="visiting-card.html" class="project-link primary">Посмотреть</a>
-                            <a href="https://github.com/ARGAMEPRO/portfolio/blob/main/visiting-card.html" class="project-link secondary">Код</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card animated delay-3">
-                    <div class="project-image">
-                        <img src="assets/blog.png" alt="Блог">
-                    </div>
-                    <div class="project-info">
-                        <h3>Персональный блог</h3>
-                        <p>Макет блога с главной страницей, списком статей и страницей отдельной статьи. Полностью адаптивный дизайн.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">HTML</span>
-                            <span class="project-tag">CSS</span>
-                            <span class="project-tag">JavaScript</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="blog.html" class="project-link primary">Посмотреть</a>
-                            <a href="https://github.com/ARGAMEPRO/portfolio/blob/main/blog.html" class="project-link secondary">Код</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card animated">
-                    <div class="project-image">
-                        <img src="assets/forum.png" alt="Форум">
-                    </div>
-                    <div class="project-info">
-                        <h3>Форум</h3>
-                        <p>Макет форума с категориями, темами и комментариями. Реализована навигация между разделами.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">HTML</span>
-                            <span class="project-tag">CSS</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="forum.html" class="project-link primary">Посмотреть</a>
-                            <a href="https://github.com/ARGAMEPRO/portfolio/blob/main/forum.html" class="project-link secondary">Код</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card animated delay-1">
-                    <div class="project-image">
-                        <img src="assets/mall.png" alt="Интернет-магазин">
-                    </div>
-                    <div class="project-info">
-                        <h3>Интернет-магазин</h3>
-                        <p>Макет интернет-магазина с каталогом товаров, карточками товаров и корзиной. Адаптивный дизайн.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">HTML</span>
-                            <span class="project-tag">CSS</span>
-                            <span class="project-tag">JavaScript</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="mall.html" class="project-link primary">Посмотреть</a>
-                            <a href="https://github.com/ARGAMEPRO/portfolio/blob/main/mall.html" class="project-link secondary">Код</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="work-body">
+          <div class="work-top"><h3>F.R.I.D.A.Y.</h3><span class="year">2026</span></div>
+          <p class="work-sub">Голосовой ассистент</p>
+          <p>Понимает команды, открывает программы и сайты, помнит контекст, отвечает голосом. Работает на Windows, macOS и Linux, есть Telegram-бот.</p>
+          <ul class="tags"><li>Python</li><li>Web Speech</li><li>Telegram</li></ul>
+          <p class="work-foot"><a href="https://github.com/ARGAMEPRO/friday" target="_blank" rel="noopener">Код на GitHub</a></p>
         </div>
-    </section>
-    
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Арсений</h3>
-                    <p>Junior Web Developer, специализирующийся на создании современных и адаптивных веб-сайтов с использованием HTML, CSS и JavaScript.</p>
-                    <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-vk"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Навигация</h3>
-                    <ul class="footer-links">
-                        <li><a href="#about">Обо мне</a></li>
-                        <li><a href="#skills">Навыки</a></li>
-                        <li><a href="#projects">Проекты</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Контакты</h3>
-                    <ul class="contact-info">
-                        <li><i class="fas fa-envelope"></i> yourmail@example.com</li>
-                        <li><i class="fab fa-telegram"></i> @yourtelegram</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Россия</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                © 2025 Арсений. Все права защищены.
-            </div>
+      </article>
+
+      <article class="work reveal">
+        <div class="preview pv-chat">
+          <div class="pv-top"><i></i><i></i><i></i></div>
+          <div class="bubble left">новая заявка</div>
+          <div class="bubble right">принял, в работе</div>
+          <div class="bubble left small">склад: 14 позиций</div>
         </div>
-    </footer>
-    
-    <script>
-        // Mobile menu toggle
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const navLinks = document.querySelector('.nav-links');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? 
-                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-        });
-        
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-            });
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 70,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // Animation on scroll
-        const animateOnScroll = () => {
-            const elements = document.querySelectorAll('.animated');
-            const windowHeight = window.innerHeight;
-            
-            elements.forEach(element => {
-                const elementPosition = element.getBoundingClientRect().top;
-                const elementVisible = 150;
-                
-                if (elementPosition < windowHeight - elementVisible) {
-                    element.style.opacity = '1';
-                    element.style.transform = 'translateY(0)';
-                }
-            });
-        };
-        
-        window.addEventListener('scroll', animateOnScroll);
-        animateOnScroll(); // Run once on page load
-    </script>
+        <div class="work-body">
+          <div class="work-top"><h3>Учёт заказов</h3><span class="year">2025</span></div>
+          <p class="work-sub">Telegram-бот для мастерской</p>
+          <p>Бот принимает заявки, ведёт статусы и склад, выгружает отчёты в Excel. Панель для владельца — в браузере.</p>
+          <ul class="tags"><li>Python</li><li>aiogram</li><li>SQLite</li><li>Flask</li></ul>
+          <p class="work-foot muted">Репозитория нет: писал под конкретную мастерскую, код у заказчика. Покажу по запросу.</p>
+        </div>
+      </article>
+
+      <article class="work reveal">
+        <div class="preview pv-chart">
+          <div class="pv-top"><i></i><i></i><i></i></div>
+          <svg viewBox="0 0 300 90" preserveAspectRatio="none">
+            <polyline points="0,70 30,58 60,64 90,40 120,48 150,26 180,34 210,18 240,24 270,10 300,16"/>
+          </svg>
+          <div class="pv-caption">+21,4 °C · 48 %</div>
+        </div>
+        <div class="work-body">
+          <div class="work-top"><h3>Метеостанция</h3><span class="year">2025</span></div>
+          <p class="work-sub">ESP32 и домашний сервер</p>
+          <p>Датчики температуры, влажности и давления, графики за неделю и месяц, уведомления в Telegram при выходе за пороги.</p>
+          <ul class="tags"><li>ESP32</li><li>C++</li><li>PlatformIO</li><li>Python</li></ul>
+          <p class="work-foot muted">Писал для дома, в открытый доступ не выкладывал. Код и работу покажу по запросу.</p>
+        </div>
+      </article>
+
+      <article class="work reveal">
+        <div class="preview pv-widget">
+          <div class="pv-top"><i></i><i></i><i></i></div>
+          <div class="widget-card">
+            <span class="w-title">Витрина</span>
+            <div class="w-lines"><i></i><i></i></div>
+            <span class="w-btn">Открыть</span>
+          </div>
+        </div>
+        <div class="work-body">
+          <div class="work-top"><h3>Виджеты Telegram</h3><span class="year">2026</span></div>
+          <p class="work-sub">Витрина Bot API</p>
+          <p>Демо новых возможностей: rich-сообщения, виджеты с HTML внутри чата, опросы и эфемерные сообщения.</p>
+          <ul class="tags"><li>Python</li><li>Bot API</li><li>HTML</li></ul>
+          <p class="work-foot muted">Демка живёт локально, отдельного репозитория нет. Могу показать вживую.</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+
+  <section class="prices" id="prices">
+    <div class="works-head reveal">
+      <p class="eyebrow">услуги</p>
+      <h2>Сколько стоит<br><span class="hand">и сколько ждать</span></h2>
+    </div>
+    <div class="price-table reveal">
+      <div class="price-row price-head">
+        <span>Услуга</span><span>Что входит</span><span>Срок</span><span>Цена</span>
+      </div>
+      <div class="price-row">
+        <span class="price-name">Лендинг</span>
+        <span class="price-desc">Вёрстка по макету, адаптив, форма заявки</span>
+        <span class="price-term">3 дня</span>
+        <span class="price-sum">от 3 000 ₽</span>
+      </div>
+      <div class="price-row">
+        <span class="price-name">Доработка сайта</span>
+        <span class="price-desc">Правки, карточки товаров, фильтр, метрика</span>
+        <span class="price-term">1–2 дня</span>
+        <span class="price-sum">от 1 500 ₽</span>
+      </div>
+      <div class="price-row">
+        <span class="price-name">Интерфейс на React</span>
+        <span class="price-desc">SPA, роутинг, подключение к вашему API</span>
+        <span class="price-term">от 5 дней</span>
+        <span class="price-sum">от 8 000 ₽</span>
+      </div>
+      <div class="price-row">
+        <span class="price-name">Telegram-бот</span>
+        <span class="price-desc">Заявки, уведомления, база, админ-команды</span>
+        <span class="price-term">3–7 дней</span>
+        <span class="price-sum">от 2 000 ₽</span>
+      </div>
+      <div class="price-row">
+        <span class="price-name">Мелкие правки</span>
+        <span class="price-desc">Тексты, отступы, кнопки, мобильная версия</span>
+        <span class="price-term">1 день</span>
+        <span class="price-sum">800 ₽/час</span>
+      </div>
+    </div>
+    <p class="price-note reveal">Цены без посредников. Точную сумму называю, когда вижу макет и объём:
+      иногда выходит дешевле, чем в таблице, иногда дороже — если внутри оказывается не одна страница,
+      а три.</p>
+  </section>
+
+  <section class="reviews" id="reviews">
+    <div class="works-head reveal">
+      <p class="eyebrow">отзывы</p>
+      <h2>Что говорят<br><span class="hand">после сдачи</span></h2>
+    </div>
+    <div class="reviews-grid">
+      <article class="review reveal">
+        <p>«Заявки терялись в переписках, половину я забывал перезвонить. Арсений сделал бота за
+          неделю, потом ещё склад к нему прикрутил. Отдельно спасибо за то, что показал, как менять
+          цены самому, — не надо писать ему из-за каждой позиции».</p>
+        <div class="review-author">
+          <span class="review-avatar">Д</span>
+          <div><b>Дмитрий</b><span>мастерская, Курск</span></div>
+        </div>
+      </article>
+      <article class="review reveal">
+        <p>«Сайт собрал за три дня, как обещал. Я потом три раза переписывала тексты и меняла
+          фотографии — правил без разговоров про доплату. Понимаю, что это мелочь, но именно из-за
+          неё я его и рекомендую».</p>
+        <div class="review-author">
+          <span class="review-avatar">О</span>
+          <div><b>Ольга</b><span>студия декора</span></div>
+        </div>
+      </article>
+      <article class="review reveal">
+        <p>«Делали систему для отслеживания пожаров к защите проекта. Он спорил по делу и в двух
+          местах сказал „вам это не нужно“ — и был прав, мы бы не успели. Схемы рисовал сам,
+          объяснял так, что понял даже я».</p>
+        <div class="review-author">
+          <span class="review-avatar">И</span>
+          <div><b>Игорь</b><span>преподаватель</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="faq" id="faq">
+    <div class="works-head reveal">
+      <p class="eyebrow">вопросы</p>
+      <h2>Спрашивают<br><span class="hand">чаще всего</span></h2>
+    </div>
+    <div class="faq-list reveal">
+      <details>
+        <summary>Сколько ждать?</summary>
+        <p>Лендинг — три дня, доработку — день или два, бота — до недели. Срок считаю с того момента,
+          когда есть текст и макет. Пока их нет, не начинаю: иначе потом переделываю по десять раз,
+          и виноваты оба.</p>
+      </details>
+      <details>
+        <summary>А если не понравится?</summary>
+        <p>Сначала показываю черновик, правки по нему бесплатны. После сдачи семь дней исправляю то,
+          что не работает или отличается от макета. Если хочется поменять саму идею — это уже другая
+          работа, но обсудим по-человечески.</p>
+      </details>
+      <details>
+        <summary>Нужна предоплата?</summary>
+        <p>Через биржу — как она устроена, деньги приходят после сдачи. Напрямую беру половину
+          вперёд, половину после.</p>
+      </details>
+      <details>
+        <summary>Возьмётесь за чужой код?</summary>
+        <p>Да, если это HTML, CSS, JavaScript или React. Сначала смотрю, что там, и только потом
+          называю цену. Иногда дешевле переписать, чем чинить, — тогда так и скажу.</p>
+      </details>
+      <details>
+        <summary>Делаете на Tilda или WordPress?</summary>
+        <p>Нет, только ручная вёрстка. Конструкторы — отдельная работа, и я в ней не силён. Если нужен
+          именно конструктор, лучше найти того, кто делает на нём каждый день.</p>
+      </details>
+      <details>
+        <summary>Кто покупает хостинг и домен?</summary>
+        <p>Вы. Это ваши документы и ваши деньги, держать их у себя я не должен. Помогу выбрать,
+          купить и привязать — входит в работу.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="contact-card reveal">
+      <div>
+        <p class="eyebrow">связь</p>
+        <h2>Расскажите задачу —<br><span class="hand">отвечу в тот же день</span></h2>
+        <p class="contact-text">Сайт, доработка, интерфейс на React или бот. Напишите, что нужно, и я скажу по срокам и цене.</p>
+      </div>
+      <div class="contact-links">
+        <a class="btn btn-primary" href="https://t.me/arsusha04" target="_blank" rel="noopener">Telegram @arsusha04</a>
+        <a class="btn btn-ghost" href="https://github.com/ARGAMEPRO" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <span>© <span id="year">2026</span> Арсений</span>
+  <span>сделано руками, без конструкторов</span>
+</footer>
+
+<script src="js/main.js"></script>
 </body>
 </html>
