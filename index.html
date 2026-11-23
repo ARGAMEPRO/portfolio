@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>arsusha — сайты и сервисы</title>
+<title>arsusha.dev</title>
 <meta name="description" content="arsusha — псевдоним Арсения. Сайты, интерфейсы на React и небольшие сервисы на Python: от вёрстки до базы и запуска.">
 <meta name="theme-color" content="#07070a">
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
@@ -13,14 +13,14 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://argamepro.github.io/portfolio/">
 <meta property="og:site_name" content="arsusha">
-<meta property="og:title" content="arsusha — сайты и сервисы">
+<meta property="og:title" content="arsusha.dev">
 <meta property="og:description" content="Сайты, интерфейсы на React и небольшие сервисы на Python. От вёрстки до базы и запуска.">
 <meta property="og:image" content="https://argamepro.github.io/portfolio/assets/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css?v=3">
 </head>
 <body>
 
@@ -33,12 +33,13 @@
 
 <header class="top">
   <a class="badge" href="#top" aria-label="arsusha">
-    <img class="badge-logo" src="assets/logo-arsusha.png" alt="arsusha">
+    <img class="badge-logo" src="assets/logo-arsusha.png" width="64" height="19" alt="arsusha">
   </a>
   <nav class="nav">
     <a href="#works">работы</a>
     <a href="#about">обо мне</a>
     <a href="#contact">контакты</a>
+    <a class="lang" href="en/" hreflang="en">en</a>
   </nav>
 </header>
 
@@ -124,8 +125,7 @@
       </ul>
     </div>
     <aside class="about-card reveal">
-      <div class="avatar"><img src="assets/logo-mark.svg" alt=""></div>
-      <div class="about-card-row"><span>Город</span><b>Курск</b></div>
+      <div class="avatar"><img src="assets/logo-mark.svg" width="28" height="28" alt=""></div>
       <div class="about-card-row"><span>Формат</span><b>удалённо</b></div>
       <div class="about-card-row"><span>Связь</span><b>Telegram</b></div>
       <p class="about-note">Беру задачи целиком и отвечаю в течение дня.</p>
@@ -158,6 +158,7 @@
           <p class="work-sub">Система мониторинга лесных пожаров</p>
           <p>Детекция огня и дыма на фото, видео и RTSP, карта очагов, расчёт распространения с учётом ветра и рельефа, PDF-донесения. Собран целиком: сервер, интерфейс, Docker.</p>
           <ul class="tags"><li>FastAPI</li><li>PostgreSQL</li><li>React</li><li>YOLOv11</li><li>MapLibre</li></ul>
+          <p class="work-note">Проект активно ищет спонсоров или покупателей. Готов обсудить условия и передачу.</p>
           <p class="work-foot"><a href="https://github.com/ARGAMEPRO/KEDER" target="_blank" rel="noopener">Код на GitHub</a></p>
         </div>
       </article>
@@ -289,7 +290,7 @@
           цены самому, — не надо писать ему из-за каждой позиции».</p>
         <div class="review-author">
           <span class="review-avatar">Д</span>
-          <div><b>Дмитрий</b><span>мастерская, Курск</span></div>
+          <div><b>Дмитрий</b><span>мастерская</span></div>
         </div>
       </article>
       <article class="review reveal">
