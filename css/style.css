@@ -92,6 +92,7 @@ h2 .hand{margin-top:-9px}
   border:1px solid transparent;transition:transform .2s,background .2s,border-color .2s;
 }
 .btn:active{transform:scale(.985)}
+button.btn{font:inherit;font-weight:600;cursor:pointer}
 .btn-primary{background:#f4f5f8;color:#0a0a0d}
 .btn-primary:hover{background:#fff}
 .btn-ghost{border-color:var(--line);background:rgba(255,255,255,.03);color:#e7e8ee}

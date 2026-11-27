@@ -65,3 +65,35 @@
     });
   });
 })();
+
+/* копирование ника в дискорде */
+(function(){
+  document.querySelectorAll('[data-copy]').forEach(function(btn){
+    btn.addEventListener('click', async function(){
+      var value = btn.dataset.copy;
+      var ok = false;
+      try {
+        await navigator.clipboard.writeText(value);
+        ok = true;
+      } catch (err) {
+        // запасной путь: file:// и старые браузеры
+        var field = document.createElement('textarea');
+        field.value = value;
+        field.style.position = 'fixed';
+        field.style.opacity = '0';
+        document.body.appendChild(field);
+        field.select();
+        try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+        document.body.removeChild(field);
+      }
+      if (ok) {
+        var done = btn.dataset.copied || 'скопировано';
+        var old = btn.textContent;
+        btn.textContent = done;
+        setTimeout(function(){ btn.textContent = old; }, 1600);
+      } else {
+        window.prompt('Скопируйте ник', value);
+      }
+    });
+  });
+})();
