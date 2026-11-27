@@ -412,6 +412,7 @@
         </div>
       </article>
     </div>
+    <p class="works-note reveal">Some projects are under NDA — details on a call.</p>
   </section>
 
   <section class="prices" id="prices">
@@ -419,142 +420,34 @@
       <p class="eyebrow">services</p>
       <h2>What it costs<br><span class="hand">and how long it takes</span></h2>
     </div>
-    <div class="price-tabs reveal" role="tablist" aria-label="Directions">
-      <button class="price-tab is-on" role="tab" aria-selected="true" data-tab="sites">Websites</button>
-      <button class="price-tab" role="tab" aria-selected="false" data-tab="react">React</button>
-      <button class="price-tab" role="tab" aria-selected="false" data-tab="bots">Telegram bots</button>
-    </div>
-    <div class="price-panels reveal">
-      <div class="price-panel is-on" id="panel-sites" role="tabpanel">
-        <div class="price-table">
-          <div class="price-row price-head"><span>Item</span><span>What you get</span><span>Term</span><span>Price</span></div>
+      <div class="price-table reveal">
+        <div class="price-row price-head"><span>Project</span><span>Scope</span><span>Time</span><span>Price</span></div>
         <div class="price-row">
-          <span class="price-name">Basic</span>
-          <span class="price-desc">Landing page from a layout: markup, responsive, contact form</span>
-          <span class="price-term">3 days</span>
-          <span class="price-sum">2 000 ₽</span>
+          <span class="price-name">Site with catalogue and admin</span>
+          <span class="price-desc">Catalogue, filters, admin panel, forms</span>
+          <span class="price-term">3 weeks</span>
+          <span class="price-sum">from 35 000 ₽</span>
         </div>
         <div class="price-row">
-          <span class="price-name">Standard</span>
-          <span class="price-desc">Two or three pages, animations, meta tags for search</span>
-          <span class="price-term">5 days</span>
-          <span class="price-sum">3 600 ₽</span>
+          <span class="price-name">Landing page</span>
+          <span class="price-desc">One page, motion, forms, mobile version</span>
+          <span class="price-term">1 week</span>
+          <span class="price-sum">from 12 000 ₽</span>
         </div>
         <div class="price-row">
-          <span class="price-name">Business</span>
-          <span class="price-desc">Catalog, filters, admin panel, hookup to your API</span>
-          <span class="price-term">10 days</span>
-          <span class="price-sum">15 000 ₽</span>
+          <span class="price-name">Canvas or editor in the browser</span>
+          <span class="price-desc">Blocks, links, files, autosave</span>
+          <span class="price-term">2 weeks</span>
+          <span class="price-sum">from 45 000 ₽</span>
         </div>
         <div class="price-row">
-          <span class="price-name">Site tweaks</span>
-          <span class="price-desc">Edits, new blocks, product cards, filters</span>
-          <span class="price-term">1–2 days</span>
-          <span class="price-sum">from 1 500 ₽</span>
-        </div>
-        <div class="price-row">
-          <span class="price-name">Small fixes</span>
-          <span class="price-desc">Copy, spacing, buttons, mobile layout</span>
-          <span class="price-term">1 day</span>
-          <span class="price-sum">800 ₽/h</span>
-        </div>
-        </div>
-      </div><div class="price-panel" id="panel-react" role="tabpanel">
-        <div class="price-table">
-          <div class="price-row price-head"><span>Item</span><span>What you get</span><span>Term</span><span>Price</span></div>
-        <div class="price-row">
-          <span class="price-name">Basic</span>
-          <span class="price-desc">One React page: components, responsive, Vite build</span>
-          <span class="price-term">4 days</span>
-          <span class="price-sum">2 400 ₽</span>
-        </div>
-        <div class="price-row">
-          <span class="price-name">Standard</span>
-          <span class="price-desc">Routing, API hookup, build and deploy to your hosting</span>
-          <span class="price-term">6 days</span>
-          <span class="price-sum">4 000 ₽</span>
-        </div>
-        <div class="price-row">
-          <span class="price-name">Business</span>
-          <span class="price-desc">Auth, roles, account area, error and upload handling</span>
-          <span class="price-term">10 days</span>
-          <span class="price-sum">12 000 ₽</span>
-        </div>
-        <div class="price-row">
-          <span class="price-name">API hookup</span>
-          <span class="price-desc">Requests, loading and error states, tokens</span>
-          <span class="price-term">1 day</span>
-          <span class="price-sum">from 1 500 ₽</span>
-        </div>
-        <div class="price-row">
-          <span class="price-name">Catalog or table</span>
-          <span class="price-desc">Filters, sorting, search, paging</span>
-          <span class="price-term">2 days</span>
-          <span class="price-sum">from 2 500 ₽</span>
-        </div>
-        <div class="price-row">
-          <span class="price-name">Auth and roles</span>
-          <span class="price-desc">Token login, protected routes, account area</span>
-          <span class="price-term">2 days</span>
-          <span class="price-sum">from 3 000 ₽</span>
-        </div>
-        </div>
-      </div><div class="price-panel" id="panel-bots" role="tabpanel">
-        <div class="price-table">
-          <div class="price-row price-head"><span>Item</span><span>What you get</span><span>Term</span><span>Price</span></div>
-        <div class="price-row">
-          <span class="price-name">Basic</span>
-          <span class="price-desc">Menu, buttons, requests land in your chat</span>
-          <span class="price-term">1 day</span>
-          <span class="price-sum">2 000 ₽</span>
-        </div>
-        <div class="price-row">
-          <span class="price-name">Standard</span>
-          <span class="price-desc">Requests in a database, statuses, notifications, Excel export</span>
-          <span class="price-term">3 days</span>
-          <span class="price-sum">3 600 ₽</span>
-        </div>
-        <div class="price-row">
-          <span class="price-name">Business</span>
-          <span class="price-desc">Payments, admin panel, roles, broadcasts to subscribers</span>
-          <span class="price-term">10 days</span>
-          <span class="price-sum">25 000 ₽</span>
-        </div>
-        <div class="price-row">
-          <span class="price-name">Database and admin panel</span>
-          <span class="price-desc">Requests in a database, browser panel: statuses, prices</span>
-          <span class="price-term">3 days</span>
-          <span class="price-sum">3 000 ₽</span>
-        </div>
-        <div class="price-row">
-          <span class="price-name">Payments</span>
-          <span class="price-desc">YooKassa or Telegram Stars, access unlocked after payment</span>
-          <span class="price-term">2 days</span>
-          <span class="price-sum">2 500 ₽</span>
-        </div>
-        <div class="price-row">
-          <span class="price-name">Excel reports</span>
-          <span class="price-desc">Requests exported to a file, sent to chat automatically</span>
-          <span class="price-term">1 day</span>
-          <span class="price-sum">1 500 ₽</span>
-        </div>
-        <div class="price-row">
-          <span class="price-name">Server deploy</span>
-          <span class="price-desc">VPS, autostart, restart on crash</span>
-          <span class="price-term">1 day</span>
-          <span class="price-sum">1 500 ₽</span>
-        </div>
-        <div class="price-row">
-          <span class="price-name">Script and copy</span>
-          <span class="price-desc">Greeting, questions, buttons for your task</span>
-          <span class="price-term">1 day</span>
-          <span class="price-sum">1 000 ₽</span>
-        </div>
+          <span class="price-name">Bot or Python service</span>
+          <span class="price-desc">FastAPI, database, notifications, deploy</span>
+          <span class="price-term">1–2 weeks</span>
+          <span class="price-sum">from 9 000 ₽</span>
         </div>
       </div>
-    </div>
-    <p class="price-note reveal">These are the prices from my Kwork listings, with no surcharge for "urgency" or messages.
-      Small fixes are 800 ₽ an hour. I give an exact quote once I see the layout and the scope.</p>
+    <p class="price-note reveal">These are prices from recent work. The exact sum comes after we discuss the task: it depends on scope, integrations and deadlines.</p>
   </section>
 
   <section class="reviews" id="reviews">

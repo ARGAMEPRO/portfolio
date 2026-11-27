@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://argamepro.github.io/portfolio/sitemap.xml
